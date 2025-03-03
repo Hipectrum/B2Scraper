@@ -13,7 +13,7 @@ headers = {
 
 base_URL = "https://books.toscrape.com/catalogue/page-{}.html"
 
-first_response = requests.get(url=base_URL.format(1), headers=headers, timeout=20)
+first_response = requests.get(url=base_URL.format(1), headers=headers, timeout=30)
 f_html = first_response.text
 
 first_soup = BeautifulSoup(f_html, "html.parser")
@@ -30,7 +30,7 @@ rating = []
 
 for page in range(1, max_page +1):
     URL = base_URL.format(page)
-    second_response = requests.get(url=URL, headers=headers, timeout=20)
+    second_response = requests.get(url=URL, headers=headers, timeout=30)
     s_html = second_response.text
     second_soup = BeautifulSoup(s_html, "html.parser")
 
@@ -71,7 +71,7 @@ for page in range(1, max_page +1):
             rating.append("⭐⭐⭐⭐⭐")
 
         else:
-            rating.append("None")
+            rating.append("No Rating")
 
 
 
